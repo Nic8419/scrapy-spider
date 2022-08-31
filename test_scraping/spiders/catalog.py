@@ -7,7 +7,6 @@ class BookSpider(scrapy.Spider):
 
     def parse(self, response):
         for link in response.css('a.name-link ::attr(href)'):
-            print('!!!!!!!!!!!!!!!!!', link.get())
             yield response.follow(link, callback=self.parse_book)
 
         # Code for several pages
